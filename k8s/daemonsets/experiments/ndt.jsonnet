@@ -41,6 +41,10 @@ exp.Experiment('ndt', 2, ['ndt5', 'ndt7']) + {
             ],
 
           },
+          {
+            name: 'phatbox',
+            image: 'measurementlab/phatbox:20190717',
+          },
         ],
         // The default grace period after k8s sends SIGTERM is 30s. We
         // extend the grace period to give time for the following
