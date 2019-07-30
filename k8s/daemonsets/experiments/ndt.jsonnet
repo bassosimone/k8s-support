@@ -45,7 +45,7 @@ exp.Experiment('ndt', 2, ['ndt5', 'ndt7']) + {
             name: 'phatbox',
             image: 'measurementlab/phatbox:20190724',
 	    securityContext: {
-	      privileged: 'true',
+	      privileged: true,
 	    },
 	    volumeMounts: [
 	      {
