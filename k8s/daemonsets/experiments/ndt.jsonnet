@@ -41,6 +41,19 @@ exp.Experiment('ndt', 2, ['ndt5', 'ndt7']) + {
             ],
 
           },
+          {
+            name: 'phatbox',
+            image: 'measurementlab/phatbox:20190802',
+	    securityContext: {
+	      privileged: true,
+	    },
+	    volumeMounts: [
+	      {
+	        mountPath: '/dev/fuse',
+		name: 'dev-fuse',
+	      }
+	    ],
+          },
         ],
         // The default grace period after k8s sends SIGTERM is 30s. We
         // extend the grace period to give time for the following
@@ -66,6 +79,12 @@ exp.Experiment('ndt', 2, ['ndt5', 'ndt7']) + {
               secretName: 'ndt-tls',
             },
           },
+	  {
+            name: 'dev-fuse',
+	    hostPath: {
+	      path: '/dev/fuse',
+	    },
+	  },
         ],
       },
     },
