@@ -165,13 +165,17 @@ local Pcap(expName, tcpPort, hostNetwork) = [
     name: 'pcap',
     image: 'measurementlab/packet-headers:v0.3',
     args: [
-      if hostNetwork then
-        '-prometheusx.listen-address=127.0.0.1:' + tcpPort
-      else
-        '-prometheusx.listen-address=$(PRIVATE_IP):' + tcpPort,
       '-datadir=' + VolumeMount(expName).mountPath + '/pcap',
       '-eventsocket=' + tcpinfoServiceVolume.eventsocketFilename,
-    ],
+    ] + if hostNetwork then
+        [
+          '-prometheusx.listen-address=127.0.0.1:' + tcpPort,
+          '-interface=eth0'
+        ]
+      else
+        [
+          '-prometheusx.listen-address=$(PRIVATE_IP):' + tcpPort
+        ],
     env: if hostNetwork then [] else [
       {
         name: 'PRIVATE_IP',
