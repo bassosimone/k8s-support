@@ -1,4 +1,4 @@
-local datatypes = ['ndt5', 'ndt7'];
+local datatypes = ['ndt5', 'ndt7upload', 'ndt7download'];
 local exp = import '../templates.jsonnet';
 local expName = 'ndt';
 
