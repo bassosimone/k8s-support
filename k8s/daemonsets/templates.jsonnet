@@ -381,7 +381,7 @@ local ExperimentNoIndex(name, bucket, anonMode, datatypes, hostNetwork) = {
             if anonMode == "none" then
               Traceroute(name, 9992, hostNetwork) else [],
             Pcap(name, 9993, hostNetwork),
-            if std.extVar('PROJECT_ID') != 'mlab-oti' then
+            if std.extVar('PROJECT_ID') != 'x-mlab-oti' then
               UUIDAnnotator(name, 9994, hostNetwork)
             else [],
             Pusher(name, 9995, allDatatypes, hostNetwork, bucket),
