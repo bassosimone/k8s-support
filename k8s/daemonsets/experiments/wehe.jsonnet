@@ -30,6 +30,7 @@ exp.Experiment(expName, 5, 'pusher-' + std.extVar('PROJECT_ID'), 'netblock', ['r
           },
         ],
         containers+: [
+          /*
           {
             args: [
               '-envelope.device=net1',
@@ -48,6 +49,7 @@ exp.Experiment(expName, 5, 'pusher-' + std.extVar('PROJECT_ID'), 'netblock', ['r
               },
             },
           },
+          */
           {
             args: [
               'wehe.$(MLAB_NODE_NAME)',
