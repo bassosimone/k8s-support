@@ -32,7 +32,26 @@ exp.Experiment(expName, 5, 'pusher-' + std.extVar('PROJECT_ID'), 'netblock', ['r
         containers+: [
           {
             args: [
+              '-envelope.device=net1',
+              // TODO: require tokens after clients support envelope.
+              '-envelope.token-required=false',
+              // NOTE: only support ipv4 connections to the envelope.
+              '-httpx.tcp-network=tcp4',
+            ],
+            image: 'measurementlab/access:latest',
+            name: 'access',
+            securityContext: {
+              capabilities: {
+                add: [
+                  'NET_ADMIN',
+                ],
+              },
+            },
+          },
+          {
+            args: [
               'wehe.$(MLAB_NODE_NAME)',
+              'net1',
             ],
             env: [
               {
@@ -44,7 +63,7 @@ exp.Experiment(expName, 5, 'pusher-' + std.extVar('PROJECT_ID'), 'netblock', ['r
                 },
               },
             ],
-            image: 'measurementlab/wehe-py3:v0.1.0',
+            image: 'measurementlab/wehe-py3:v0.1.4',
             name: expName,
             volumeMounts: [
               exp.VolumeMount('wehe/replay') + {
