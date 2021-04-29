@@ -15,6 +15,7 @@ local PROJECT_ID = std.extVar('PROJECT_ID');
 //  * all currently running tests complete. (30s max)
 //  * give everything an additional 30s to be safe
 //  * 60s + 60s + 30s + 30s = 180s grace period
+
 local terminationGracePeriodSeconds = 180;
 
 local uuid = {
