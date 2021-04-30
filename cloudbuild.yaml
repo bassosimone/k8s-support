@@ -1,4 +1,9 @@
 steps:
+# Use Google CLoud Registry mirror for docker images
+- echo 'DOCKER_OPTS="$DOCKER_OPTS --debug --registry-mirror=https://mirror.gcr.io"'
+- sudo service docker restart
+- docker system info
+
 # Create the configs
 - name: gcr.io/$PROJECT_ID/gcloud-jsonnet-cbif
   dir: '/workspace/manage-cluster'
