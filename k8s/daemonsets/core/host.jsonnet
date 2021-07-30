@@ -30,11 +30,21 @@ exp.ExperimentNoIndex(expName, 'pusher-' + std.extVar('PROJECT_ID'), "none", nod
                 mountPath: '/etc/os-release',
                 name: 'etc-os-release',
                 readOnly: true,
+
               },
               exp.VolumeMount(expName),
             ],
           },
           exp.RBACProxy('nodeinfo', 9990),
+          {
+            name: "qperf",
+            image: "soltesz/qperf:v0.0.2",
+            args: [
+              "-server=0.0.0.0",
+              "-debug",
+            ],
+            // workingDir: "/var/spool/qperf",
+          },
         ],
         hostNetwork: true,
         hostPID: true,
