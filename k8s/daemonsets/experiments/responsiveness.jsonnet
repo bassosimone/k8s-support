@@ -34,7 +34,7 @@ exp.ExperimentNoIndex(expName, 'pusher-' + std.extVar('PROJECT_ID'), 'none', [],
                 },
               },
             ],
-            image: 'soltesz/responsiveness-server:v0.1.1',
+            image: 'soltesz/responsiveness-server:v0.1.2',
             name: 'responsiveness-server',
             volumeMounts: [
               {
