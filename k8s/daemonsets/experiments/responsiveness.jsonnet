@@ -1,7 +1,7 @@
 local exp = import '../templates.jsonnet';
 local expName = 'responsiveness';
 
-exp.ExperimentNoIndex(expName, 'pusher-' + std.extVar('PROJECT_ID'), "none", [], true) + {
+exp.ExperimentNoIndex(expName, 'pusher-' + std.extVar('PROJECT_ID'), 'none', [], true) + {
   spec+: {
     template+: {
       metadata+: {
@@ -34,11 +34,8 @@ exp.ExperimentNoIndex(expName, 'pusher-' + std.extVar('PROJECT_ID'), "none", [],
                 },
               },
             ],
-            image: 'soltesz/responsiveness-server:v0.1',
+            image: 'soltesz/responsiveness-server:v0.1.1',
             name: 'responsiveness-server',
-            command: [
-              '/server/networkqualityd',
-            ],
             volumeMounts: [
               {
                 mountPath: '/certs',
